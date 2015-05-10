@@ -1,0 +1,26 @@
+{
+  "name": "ganglion-discovery-aws",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha -dir $CIRCLE_ARTIFACTS",
+    "publish-coverage": "cat $CIRCLE_ARTIFACTS/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roylines/ganglion-discovery-aws.git"
+  },
+  "keywords": [
+  ],
+  "author": "Roy Lines <roy@roylines.co.uk> (http://roylines.co.uk)",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "*",
+    "coveralls": "*",
+    "istanbul": "*",
+    "mocha": "*"
+  },
+  "dependencies": {
+  }
+}
