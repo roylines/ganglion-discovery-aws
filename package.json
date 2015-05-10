@@ -11,16 +11,18 @@
     "type": "git",
     "url": "https://github.com/roylines/ganglion-discovery-aws.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "Roy Lines <roy@roylines.co.uk> (http://roylines.co.uk)",
   "license": "MIT",
   "devDependencies": {
     "chai": "*",
     "coveralls": "*",
     "istanbul": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "sinon": "*"
   },
   "dependencies": {
+    "aws-sdk": "^2.1.27",
+    "lodash": "^3.8.0"
   }
 }

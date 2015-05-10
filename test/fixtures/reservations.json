@@ -1,0 +1,56 @@
+{
+  "Reservations": [{
+    "Instances": [{
+      "State": {
+        "Name": "running"
+      },
+      "PrivateIpAddress": "41.41.41.41",
+      "Tags": [{
+        "Key": "other",
+        "Value": "other"
+      }, {
+        "Key": "ganglion-name",
+        "Value": "microservice-1"
+      }, {
+        "Key": "ganglion-endpoint",
+        "Value": "/api/microservice-1"
+      }]
+    }, {
+      "State": {
+        "Name": "running"
+      },
+      "PrivateIpAddress": "42.42.42.42",
+      "Tags": [{
+        "Key": "ganglion-name",
+        "Value": "microservice-2"
+      }, {
+        "Key": "ganglion-endpoint",
+        "Value": "/api/microservice-2"
+      }]
+    }, {
+      "State": {
+        "Name": "running"
+      },
+      "PrivateIpAddress": "43.43.43.43",
+      "Tags": [{
+        "Key": "ganglion-name",
+        "Value": "microservice-1"
+      }, {
+        "Key": "ganglion-endpoint",
+        "Value": "/api/microservice-1"
+      }]
+    }, {
+      "State": {
+        "Name": "deleting"
+      },
+      "PrivateIpAddress": "44.44.44.44",
+      "Tags": [{
+        "Key": "ganglion-name",
+        "Value": "microservice-1"
+      }, {
+        "Key": "ganglion-endpoint",
+        "Value": "/api/microservice-1"
+      }]
+    }]
+  }]
+}
