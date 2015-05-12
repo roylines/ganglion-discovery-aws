@@ -17,12 +17,14 @@ module.exports = function(done) {
     _.forEach(data.Reservations, function(reservation) {
       _.forEach(reservation.Instances, function(instance) {
         if (instance.State.Name === 'running') {
-          var name, endpoint;
+          var name, endpoint, port;
           _.forEach(instance.Tags, function(tag) {
             if (tag.Key === 'ganglion-name') {
               name = tag.Value;
             } else if (tag.Key === 'ganglion-endpoint') {
               endpoint = tag.Value;
+            } else if (tag.Key === 'ganglion-port') {
+              port = tag.Value;
             }
           });
           if (!dictionary[name]) {
@@ -34,7 +36,7 @@ module.exports = function(done) {
             dictionary[name] = item;
             mapped.push(item);
           }
-          dictionary[name].addresses.push(instance.PrivateIpAddress);
+          dictionary[name].addresses.push(instance.PrivateIpAddress + ':' + port);
         }
       });
     });

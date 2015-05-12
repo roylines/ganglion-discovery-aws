@@ -35,11 +35,11 @@ describe('index', function() {
       data.should.deep.equal([{
         name: 'microservice-1',
         endpoint: '/api/microservice-1',
-        addresses: ['41.41.41.41', '43.43.43.43']
+        addresses: ['41.41.41.41:5000', '43.43.43.43:5000']
       }, {
         name: 'microservice-2',
         endpoint: '/api/microservice-2',
-        addresses: ['42.42.42.42']
+        addresses: ['42.42.42.42:5000']
       }]);
       return done();
     });

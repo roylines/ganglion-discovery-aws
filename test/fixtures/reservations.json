@@ -14,6 +14,9 @@
       }, {
         "Key": "ganglion-endpoint",
         "Value": "/api/microservice-1"
+      }, {
+        "Key": "ganglion-port",
+        "Value": "5000"
       }]
     }, {
       "State": {
@@ -26,7 +29,11 @@
       }, {
         "Key": "ganglion-endpoint",
         "Value": "/api/microservice-2"
-      }]
+      },{
+        "Key": "ganglion-port",
+        "Value": "5000"
+      }
+      ]
     }, {
       "State": {
         "Name": "running"
@@ -38,6 +45,9 @@
       }, {
         "Key": "ganglion-endpoint",
         "Value": "/api/microservice-1"
+      }, {
+        "Key": "ganglion-port",
+        "Value": "5000"
       }]
     }, {
       "State": {
@@ -50,6 +60,9 @@
       }, {
         "Key": "ganglion-endpoint",
         "Value": "/api/microservice-1"
+      }, {
+        "Key": "ganglion-port",
+        "Value": "5000"
       }]
     }]
   }]
