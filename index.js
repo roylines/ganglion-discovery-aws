@@ -5,8 +5,34 @@ AWS.config.update({
   region: process.env.AWS_REGION
 });
 
+function parse(instance) {
+  var parsed = {
+    ipaddress: instance.PrivateIpAddress
+  };
+
+  return _.reduce(instance.Tags, function(result, tag) {
+    if (tag.Key.indexOf('ganglion-') === 0) {
+      result[tag.Key.substr(9)] = tag.Value;
+    }
+    return result;
+  }, parsed);
+}
+
+function add(dictionary, mapped, details) {
+  if (!dictionary[details.name]) {
+    var item = {
+      name: details.name,
+      endpoint: details.endpoint,
+      addresses: []
+    };
+    dictionary[details.name] = item;
+    mapped.push(item);
+  }
+  dictionary[details.name].addresses.push(details.ipaddress + ':' + details.port);
+}
+
 module.exports = function(done) {
-  new AWS.EC2().describeInstances(function(e, data) {
+  return new AWS.EC2().describeInstances(function(e, data) {
     if (e) {
       return done(e);
     }
@@ -17,26 +43,7 @@ module.exports = function(done) {
     _.forEach(data.Reservations, function(reservation) {
       _.forEach(reservation.Instances, function(instance) {
         if (instance.State.Name === 'running') {
-          var name, endpoint, port;
-          _.forEach(instance.Tags, function(tag) {
-            if (tag.Key === 'ganglion-name') {
-              name = tag.Value;
-            } else if (tag.Key === 'ganglion-endpoint') {
-              endpoint = tag.Value;
-            } else if (tag.Key === 'ganglion-port') {
-              port = tag.Value;
-            }
-          });
-          if (!dictionary[name]) {
-            var item = {
-              name: name,
-              endpoint: endpoint,
-              addresses: []
-            };
-            dictionary[name] = item;
-            mapped.push(item);
-          }
-          dictionary[name].addresses.push(instance.PrivateIpAddress + ':' + port);
+          add(dictionary, mapped, parse(instance));
         }
       });
     });
